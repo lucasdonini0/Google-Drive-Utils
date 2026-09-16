@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.googleusercontent.com data:; style-src 'self'; script-src 'self'" />
+    <title>Google Drive Utils</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <svg class="drive-logo" viewBox="0 0 36 32" aria-hidden="true">
+          <path d="M12 2h12l10 18-6 10H8L2 20 12 2Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+          <path d="m12 2 10 18M24 2 14 20m-12 0h32M8 30l6-10h8l6 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+        </svg>
+        <span>Google Drive Utils</span>
+      </div>
+      <div id="account" class="account">
+        <span id="account-name">Not signed in</span>
+        <button id="auth-button" class="small-button">Sign in</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h1>Download the folder you want.</h1>
+        <p>Paste a Google Drive folder link. We will keep its structure and package it on this computer.</p>
+      </section>
+
+      <section class="card">
+        <label for="folder-url">Google Drive folder link</label>
+        <div class="input-row">
+          <input id="folder-url" type="url" spellcheck="false" placeholder="https://drive.google.com/drive/folders/…" />
+          <button id="scan-button" class="primary">Scan folder</button>
+        </div>
+        <p id="message" class="message" role="status"></p>
+      </section>
+
+      <section id="options-card" class="card hidden">
+        <div class="folder-summary">
+          <div>
+            <span class="eyebrow">Ready to download</span>
+            <h2 id="folder-name"></h2>
+          </div>
+          <p id="folder-stats"></p>
+        </div>
+
+        <fieldset>
+          <legend>Download format</legend>
+          <label class="choice">
+            <input type="radio" name="mode" value="single-zip" checked />
+            <span><strong>One ZIP</strong><small>Everything in one archive.</small></span>
+          </label>
+          <label id="per-folder-choice" class="choice">
+            <input type="radio" name="mode" value="per-folder" />
+            <span><strong>One ZIP per folder</strong><small>Root files get their own ZIP.</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="mode" value="individual" />
+            <span><strong>Individual files</strong><small>Preserve the complete folder structure.</small></span>
+          </label>
+        </fieldset>
+
+        <label for="destination">Save to</label>
+        <div class="input-row">
+          <input id="destination" type="text" readonly placeholder="Choose a folder" />
+          <button id="browse-button">Browse</button>
+        </div>
+        <button id="download-button" class="primary download-button" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14" /></svg>
+          Download
+        </button>
+      </section>
+
+      <section id="progress-card" class="card hidden">
+        <div class="progress-heading">
+          <div><span class="eyebrow" id="progress-phase">Downloading</span><h2 id="progress-title">Preparing…</h2></div>
+          <span id="progress-percent">0%</span>
+        </div>
+        <div class="progress-track"><div id="progress-bar"></div></div>
+        <p id="progress-detail" class="subtle"></p>
+        <button id="cancel-button">Cancel</button>
+      </section>
+
+      <section id="result-card" class="card hidden">
+        <h2 id="result-title"></h2>
+        <p id="result-message"></p>
+        <ul id="failure-list"></ul>
+        <div class="result-actions">
+          <button id="retry-button" class="primary hidden">Try failed downloads again</button>
+          <button id="again-button">Download another folder</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

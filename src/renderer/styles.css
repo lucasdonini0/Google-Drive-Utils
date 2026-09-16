@@ -1,0 +1,68 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #080808;
+  color: #f5f5f5;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: #080808; }
+button, input { font: inherit; }
+button { color: #fff; background: #171717; border: 1px solid #343434; border-radius: 10px; padding: 11px 16px; cursor: pointer; }
+button:hover:not(:disabled) { background: #222; }
+button:disabled { opacity: .42; cursor: not-allowed; }
+button.primary { color: #050505; background: #fff; border-color: #fff; font-weight: 650; }
+button.primary:hover:not(:disabled) { background: #dedede; }
+
+header { height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; border-bottom: 1px solid #252525; }
+.brand, .account { display: flex; align-items: center; gap: 12px; }
+.brand { font-size: 15px; font-weight: 650; letter-spacing: -.01em; }
+.drive-logo { width: 25px; height: 23px; }
+.account { color: #a9a9a9; font-size: 13px; }
+.small-button { padding: 7px 11px; border-radius: 8px; font-size: 13px; }
+
+main { width: min(720px, calc(100% - 48px)); margin: 72px auto; }
+.intro { margin-bottom: 32px; }
+h1, h2, p { margin-top: 0; }
+h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.05; letter-spacing: -.045em; margin-bottom: 14px; }
+h2 { font-size: 20px; margin: 5px 0 0; }
+.intro p, .subtle { color: #999; line-height: 1.55; }
+.intro p { max-width: 600px; }
+
+.card { border: 1px solid #292929; background: #0d0d0d; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+.hidden { display: none; }
+label, legend { display: block; font-size: 13px; color: #bdbdbd; margin-bottom: 9px; }
+.input-row { display: flex; gap: 10px; }
+input[type="url"], input[type="text"] { width: 100%; min-width: 0; background: #050505; color: #fff; border: 1px solid #343434; border-radius: 10px; padding: 12px 14px; outline: none; }
+input:focus { border-color: #777; box-shadow: 0 0 0 3px #ffffff12; }
+.message { color: #e9a7a7; font-size: 13px; margin: 12px 0 0; min-height: 0; }
+.message:empty { display: none; }
+
+.folder-summary, .progress-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.folder-summary { padding-bottom: 22px; border-bottom: 1px solid #252525; }
+.folder-summary > p { color: #999; font-size: 13px; text-align: right; line-height: 1.5; }
+.eyebrow { color: #777; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+fieldset { border: 0; padding: 20px 0; margin: 0; }
+.choice { display: flex; align-items: flex-start; gap: 11px; padding: 12px 0; margin: 0; cursor: pointer; }
+.choice input { margin-top: 3px; accent-color: #fff; }
+.choice span { display: grid; gap: 3px; }
+.choice strong { color: #f5f5f5; font-size: 14px; }
+.choice small { color: #888; font-size: 12px; }
+.download-button { width: 100%; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.download-button svg { width: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.progress-heading h2 { max-width: 520px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#progress-percent { font-size: 24px; font-variant-numeric: tabular-nums; }
+.progress-track { height: 5px; background: #242424; border-radius: 99px; overflow: hidden; margin: 24px 0 12px; }
+#progress-bar { width: 0; height: 100%; background: #fff; transition: width .2s ease; }
+#failure-list { color: #e9a7a7; padding-left: 20px; font-size: 13px; line-height: 1.5; }
+.result-actions { display: flex; gap: 10px; margin-top: 20px; }
+
+@media (max-width: 640px) {
+  header { padding: 0 18px; }
+  #account-name { display: none; }
+  main { width: min(100% - 28px, 720px); margin: 42px auto; }
+  .input-row { flex-direction: column; }
+  .folder-summary { flex-direction: column; gap: 8px; }
+  .folder-summary > p { text-align: left; }
+}
